@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+nc -l localhost 98
+# Starts listening on port 98 on localhost
+# When the connection is established, prints any text that is received
