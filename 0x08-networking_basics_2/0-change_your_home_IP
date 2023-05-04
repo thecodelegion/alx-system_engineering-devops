@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+docker exec -it your-container bash -c "echo '127.0.0.2 localhost' >> /etc/hosts"
+docker exec -it your-container bash -c "echo '8.8.8.8 facebook.com' >> /etc/hosts"
+# Runs commands inside the container's shell
+# Append the IP address of facebook.com to the container's /etc/hosts file
