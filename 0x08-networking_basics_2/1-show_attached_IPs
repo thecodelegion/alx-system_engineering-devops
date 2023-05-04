@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+ip addr | grep 'inet ' | awk '{print $2}' | cut -f1 -d'/'
+# Displays all active IPv4 IPs on the machine.
+# The script uses the "ip" command to extract IPv4 addresses for all active network interfaces.
+# The "grep" command is used to filter out IPv6 addresses and other unwanted information.
+# Finally, the "awk" command is used to extract and display only the IPv4 address field.
+
