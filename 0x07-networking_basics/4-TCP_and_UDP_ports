@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
+# Uses netstat to list listening sockets
+# Extracts port number and PID from netstat output
+# Use PID to get process name from /proc filesystem
+# Print the port number, PID, and process name
+
 netstat -tlnp | awk 'NR>2 {print $4, $7}' | while read -r line; do
   port=$(echo "$line" | awk '{print $1}' | awk -F ":" '{print $2}')
   pid=$(echo "$line" | awk '{print $2}' | awk -F "/" '{print $1}')
   name=$(tr '\0' ' ' < "/proc/$pid/cmdline" | sed 's/.$//')
   echo "Port: $port, PID: $pid, Program: $name"
 done
-# Uses netstat to list listening sockets
-# Extracts port number and PID from netstat output
-# Use PID to get process name from /proc filesystem
-# Print the port number, PID, and process name
